@@ -37,6 +37,7 @@ interface ServiceOption {
   protocol: string;
   remote?: string;
   uploadOnSave: boolean;
+  useIgnoreForUpload: boolean;
   useTempFile: boolean;
   openSsh: boolean;
   downloadOnOpen: boolean | 'confirm';

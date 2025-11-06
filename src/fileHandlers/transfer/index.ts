@@ -128,7 +128,7 @@ export const upload = createFileHandler<TransferOption>({
       useTempFile: config.useTempFile,
       openSsh: config.openSsh,
       // remoteTimeOffsetInHours: config.remoteTimeOffsetInHours,
-      ignore: config.ignore,
+      ignore: config.useIgnoreForUpload ? config.ignore : null,
     };
   },
   afterHandle() {
@@ -141,12 +141,19 @@ export const uploadFile = createFileHandler<TransferOption>({
   handle: uploadHandle,
   transformOption() {
     const config = this.config;
+    console.log('=== DEBUG uploadFile transformOption ===');
+    console.log('useIgnoreForUpload:', config.useIgnoreForUpload);
+    console.log('config.ignore type:', typeof config.ignore);
+    console.log('config.ignore:', config.ignore);
+    
+    const ignoreValue = config.useIgnoreForUpload ? config.ignore : null;
+    console.log('Final ignore value:', ignoreValue);
     return {
       perserveTargetMode: config.protocol === 'sftp' && !config.filePerm,
       useTempFile: config.useTempFile,
       openSsh: config.openSsh,
       // remoteTimeOffsetInHours: config.remoteTimeOffsetInHours,
-      ignore: config.ignore,
+      ignore: ignoreValue,
     };
   },
   afterHandle() {
@@ -164,7 +171,7 @@ export const uploadFolder = createFileHandler<TransferOption>({
       useTempFile: config.useTempFile,
       openSsh: config.openSsh,
       // remoteTimeOffsetInHours: config.remoteTimeOffsetInHours,
-      ignore: config.ignore,
+      ignore: config.useIgnoreForUpload ? config.ignore : null,
     };
   },
   afterHandle() {

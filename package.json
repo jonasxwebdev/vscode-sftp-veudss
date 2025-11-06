@@ -1,21 +1,17 @@
 {
   "name": "sftp",
-  "displayName": "SFTP",
+  "displayName": "SFTP - DSS",
   "description": "SFTP/FTP sync",
-  "version": "1.16.3",
-  "publisher": "Natizyskunk",
-  "author": "Natizyskunk <natan.fourie@hotmail.fr> (https://github.com/Natizyskunk)",
+  "version": "1.16.4",
+  "publisher": "jonasxwebdev",
+  "author": "jonasxwebdev",
   "engines": {
     "vscode": "^1.64.2"
   },
-  "bugs": {
-    "url": "https://github.com/Natizyskunk/vscode-sftp/issues",
-    "email": "natan.fourie@hotmail.fr"
-  },
-  "homepage": "https://github.com/Natizyskunk/vscode-sftp/blob/master/README.md",
+  "homepage": "https://github.com/jonasxwebdev/vscode-sftp-veudss/blob/master/README.md",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Natizyskunk/vscode-sftp.git"
+    "url": "https://github.com/jonasxwebdev/vscode-sftp-veudss.git"
   },
   "license": "MIT",
   "categories": [

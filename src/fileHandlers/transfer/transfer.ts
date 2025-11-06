@@ -11,6 +11,8 @@ import { FileHandleOption } from '../option';
 import { flatten } from '../../utils';
 import logger from '../../logger';
 import { getOpenTextDocuments } from '../../host';
+import * as path from 'path';
+import app from '../../app';
 
 interface InternalTransferOption extends FileHandleOption, TransferTaskTransferOption {}
 
@@ -77,6 +79,12 @@ async function transferFolder(
   const { srcFsPath, targetFsPath, srcFs, targetFs, transferOption } = config;
 
   if (transferOption.ignore && transferOption.ignore(srcFsPath)) {
+    logger.info(`Folder ignored by ignore list: ${srcFsPath}`);
+    app.sftpBarItem.showMsg(
+      `ignored ${path.basename(srcFsPath)}`, 
+      `Upload ignored: ${srcFsPath}`, 
+      3000
+    );
     return;
   }
 
@@ -119,6 +127,12 @@ async function transferFile(
   collect: (t: TransferTask) => void
 ) {
   if (config.transferOption.ignore && config.transferOption.ignore(config.srcFsPath)) {
+    logger.info(`File ignored by ignore list: ${config.srcFsPath}`);
+    app.sftpBarItem.showMsg(
+      `ignored ${path.basename(config.srcFsPath)}`, 
+      `Upload ignored: ${config.srcFsPath}`, 
+      3000
+    );
     return;
   }
 
@@ -211,6 +225,11 @@ async function _sync(
 
   const { srcFsPath, targetFsPath, srcFs, targetFs, transferOption, transferDirection } = config;
   if (transferOption.ignore && transferOption.ignore(srcFsPath)) {
+    app.sftpBarItem.showMsg(
+      `ignored ${path.basename(srcFsPath)}`, 
+      `File upload ignored: ${srcFsPath}`, 
+      3000
+    ); 
     return;
   }
 

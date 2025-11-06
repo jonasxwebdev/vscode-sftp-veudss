@@ -1,12 +1,23 @@
 # sftp sync extension for VS Code
 
-New maintained and updated version by [@Natizyskunk](https://github.com/Natizyskunk/) 😀 <!-- and [@satiromarra](https://github.com/satiromarra) --> <br>
-(Forked from the no longer maintained [liximomo's SFTP plugin](https://github.com/liximomo/vscode-sftp.git))
 
-- VS Code marketplace : https://marketplace.visualstudio.com/items?itemName=Natizyskunk.sftp <br>
+
+This version is a fork of the current master. It extends the extension with one Option.
+
+**The new config option:
+`"useIgnoreForUpload": [bool]`
+**
+
+This allows the Ignore List to be used when uploading files via command or on Save.
+
+New maintained and updated version by [@Natizyskunk](https://github.com/Natizyskunk/) 😀 `<!-- and [@satiromarra](https://github.com/satiromarra) -->` `<br>`
+(Forked from the no longer maintained [liximomo&#39;s SFTP plugin](https://github.com/liximomo/vscode-sftp.git))
+
+- VS Code marketplace : https://marketplace.visualstudio.com/items?itemName=Natizyskunk.sftp `<br>`
 - VSIX release : https://github.com/Natizyskunk/vscode-sftp/releases/
 
 ## INFOS - 2023/06/23
+
 This is the main repository for the SFTP extension since [@liximomo](https://github.com/liximomo) has set his own to deprecated in favor of this one in the VSCode marketplace.
 There are also other forks that are available. Feel free to try them.
 
@@ -16,7 +27,7 @@ At the start of the year 2023, a new fork from [@satiromarra](https://github.com
 
 As of today (2023-06-23) we'll now be two collaborators : [@satiromarra](https://github.com/satiromarra) and [@me](https://github.com/Natizyskunk) 🙂.
 
-We've been working hard to fix a lot of things and we've updated more than 50 new releases with a lot of improvements and stability fixes and we've brought new features for almost two years now. 
+We've been working hard to fix a lot of things and we've updated more than 50 new releases with a lot of improvements and stability fixes and we've brought new features for almost two years now.
 
 We'll try to keep this extension up-to-date as much as we can and add new relevant features. For the last 6 months I wasn't able to work a lot on the project because of personal reasons at the time so I'm glad [@satiromarra](https://github.com/satiromarra) was able to take on while I wasn't here.
 
@@ -43,13 +54,16 @@ VSCode-SFTP enables you to add, edit or delete files within a local directory an
 ## Installation
 
 ### Method 1 (Recommended : Auto update)
+
 1. Select Extensions (Ctrl + Shift + X).
 2. Uninstall current sftp extension from @liximomo.
 3. Install new extension directly from VS Code Marketplace : https://marketplace.visualstudio.com/items?itemName=Natizyskunk.sftp.
 4. Voilà!
 
 ### Method 2 (Manual update)
+
 To install just follow these steps from within VSCode:
+
 1. Select Extensions (Ctrl + Shift + X).
 2. Uninstall current sftp extension from @liximomo.
 3. Open "More Action" menu(ellipsis on the top) and click "Install from VSIX…".
@@ -58,6 +72,7 @@ To install just follow these steps from within VSCode:
 6. Voilà!
 
 ## Documentation
+
 - [Home](https://github.com/Natizyskunk/vscode-sftp/wiki)
 - [Settings](https://github.com/Natizyskunk/vscode-sftp/wiki/Setting)
 - [Common configuration](https://github.com/Natizyskunk/vscode-sftp/wiki/Common-Configuration)
@@ -66,15 +81,17 @@ To install just follow these steps from within VSCode:
 - [Commands](https://github.com/Natizyskunk/vscode-sftp/wiki/Commands)
 
 ## Usage
+
 If the latest files are already on a remote server, you can start with an empty local folder,
 then download your project, and from that point sync.
 
 1. In `VS Code`, open a local directory you wish to sync to the remote server (or create an empty directory
-that you wish to first download the contents of a remote server folder in order to edit locally).
+   that you wish to first download the contents of a remote server folder in order to edit locally).
 2. `Ctrl+Shift+P` on Windows/Linux or `Cmd+Shift+P` on Mac open command palette, run `SFTP: config` command.
 3. A basic configuration file will appear named `sftp.json` under the `.vscode` directory, open and edit the configuration parameters with your remote server information.
 
 For instance:
+
 ```json
 {
     "name": "Profile Name",
@@ -88,6 +105,7 @@ For instance:
     "uploadOnSave": false
 }
 ```
+
 The password parameter in `sftp.json` is optional, if left out you will be prompted for a password on sync.
 _Note：_ backslashes and other special characters must be escaped with a backslash.
 
@@ -101,6 +119,7 @@ _Note：_ backslashes and other special characters must be escaped with a backsl
 For detailed explanations please go to [wiki](https://github.com/Natizyskunk/vscode-sftp/wiki).
 
 ## Example configurations
+
 You can see the full list of configuration options [here](https://github.com/Natizyskunk/vscode-sftp/wiki/configuration).
 
 - [sftp sync extension for VS Code](#sftp-sync-extension-for-vs-code)
@@ -127,6 +146,7 @@ You can see the full list of configuration options [here](https://github.com/Nat
     - [PayPal](#paypal)
 
 ### Simple
+
 ```json
 {
   "host": "host",
@@ -136,6 +156,7 @@ You can see the full list of configuration options [here](https://github.com/Nat
 ```
 
 ### Profiles
+
 ```json
 {
   "username": "username",
@@ -166,7 +187,9 @@ _Note：_ `context` and `watcher` are only available at root level.
 Use `SFTP: Set Profile` to switch profile.
 
 ### Multiple Context
+
 The context must **not be same**.
+
 ```json
 [
   {
@@ -191,12 +214,15 @@ The context must **not be same**.
 _Note：_ `name` is required in this mode.
 
 ### Connection Hopping
+
 You can connect to a target server through a proxy with ssh protocol.
 
 _Note：_ Variable substitution is not working in a hop configuration.
 
 #### Single Hop
+
 local -> hop -> target
+
 ```json
 {
   "name": "target",
@@ -217,7 +243,9 @@ local -> hop -> target
 ```
 
 #### Multiple Hop
+
 local -> hopa -> hopb -> target
+
 ```json
 {
   "name": "target",
@@ -247,9 +275,11 @@ local -> hopa -> hopb -> target
 ```
 
 ### Configuration in User Setting
+
 You can use `remote` to tell sftp to get the configuration from [remote-fs](https://github.com/liximomo/vscode-remote-fs).
 
 In User Setting:
+
 ```json
 "remotefs.remote": {
   "dev": {
@@ -269,6 +299,7 @@ In User Setting:
 ```
 
 In sftp.json:
+
 ```json
 {
   "remote": "dev",
@@ -279,6 +310,7 @@ In sftp.json:
 ```
 
 ## Remote Explorer
+
 ![remote-explorer-preview](https://raw.githubusercontent.com/Natizyskunk/vscode-sftp/master/assets/showcase/remote-explorer.png)
 
 Remote Explorer lets you explore files in remote. You can open Remote Explorer by:
@@ -289,14 +321,17 @@ Remote Explorer lets you explore files in remote. You can open Remote Explorer b
 You can only view a files content with Remote Explorer. Run command `SFTP: Edit in Local` to edit it in local.
 
 ### Multiple Select
+
 You are able to select multiple files/folders at once on the remote server to download and upload. You can do it simply by holding down Ctrl or Shift while selecting all desired files, just like on the regular explorer view.
 
 _Note：_ You need to manually refresh the parent folder after you **delete** a file if the explorer isn't correctly updated.
 
 ### Order
+
 You can order the remote Explorer by adding the `remoteExplorer.order` parameter inside your `sftp.json` config file.
 
 In sftp.json:
+
 ```json
 {
   "remoteExplorer": {
@@ -306,22 +341,30 @@ In sftp.json:
 ```
 
 ## Debug
+
 1. Open User Settings.
-  - On Windows/Linux - `File > Preferences > Settings`
-  - On macOS - `Code > Preferences > Settings`
+
+- On Windows/Linux - `File > Preferences > Settings`
+- On macOS - `Code > Preferences > Settings`
+
 2. Set `sftp.debug` to `true` and reload vscode.
 3. View the logs in `View > Output > sftp`.
 
 ## FAQ
+
 You can see all the Frequently Asked Questions [here](./FAQ.md).
 
 ## Donation
+
 If this project helped you reduce development time and you wish to contribute financially
 
 ### Buy Me a Coffee
+
 [![Buy Me A Coffee](https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/orange_img.png)](https://www.buymeacoffee.com/Natizyskunk)
 
 ### PayPal
+
 <!-- [![PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BY89QD47D7MPS&source=url) -->
+
 [![PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/donate?business=DELD7APHHM3BC&no_recurring=0&currency_code=EUR)
 [![PayPal Me](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/natanfourie)
