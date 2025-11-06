@@ -1,5 +1,5 @@
 {
-  "name": "sftp",
+  "name": "sftp_dss",
   "displayName": "SFTP - DSS",
   "description": "SFTP/FTP sync",
   "version": "1.16.4",
