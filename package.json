@@ -2,7 +2,7 @@
   "name": "sftp-dss",
   "displayName": "SFTP - DSS",
   "description": "SFTP/FTP sync",
-  "version": "1.16.4",
+  "version": "1.16.5",
   "publisher": "jonasxwebdev",
   "author": "jonasxwebdev",
   "engines": {

@@ -1,8 +1,7 @@
 # sftp sync extension for VS Code
 
-
-
 This version is a fork of the current master. It extends the extension with one Option.
+***NEW: The delete Option always bypasses the ignore List!***
 
 **The new config option:
 `"useIgnoreForUpload": [bool]`
