@@ -2,7 +2,7 @@
   "name": "sftp-dss",
   "displayName": "SFTP - DSS",
   "description": "SFTP/FTP sync",
-  "version": "1.16.5",
+  "version": "1.16.6",
   "publisher": "jonasxwebdev",
   "author": "jonasxwebdev",
   "engines": {
@@ -670,7 +670,7 @@
     "@types/jest": "^23.3.5",
     "@types/lru-cache": "^4.1.1",
     "@types/node": "^9.6.51",
-    "@types/vscode": "1.40",
+    "@types/vscode": "1.60.0",
     "@types/webpack-env": "^1.13.6",
     "braces": ">=2.3.1",
     "glob-parent": ">=5.1.2",

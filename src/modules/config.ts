@@ -68,6 +68,17 @@ const configScheme = {
       .items(Joi.string()),
     order: Joi.number(),
   },
+  
+  syncStatus: {
+    enabled: Joi.boolean(),
+    refreshInterval: Joi.number().integer(),
+    showLocalOnly: Joi.boolean(),
+    showRemoteOnly: Joi.boolean(),
+    showModified: Joi.boolean(),
+    showSynced: Joi.boolean(),
+    showIgnored: Joi.boolean(),
+    timeTolerance: Joi.number().integer(), // milliseconds tolerance for timestamp comparison
+  },
 };
 
 const defaultConfig = {
@@ -113,6 +124,17 @@ const defaultConfig = {
 
   remoteExplorer: {
     order: 0,
+  },
+  
+  syncStatus: {
+    enabled: false,
+    refreshInterval: 30000,
+    showLocalOnly: true,
+    showRemoteOnly: true,
+    showModified: true,
+    showSynced: false,
+    showIgnored: false,
+    timeTolerance: 86400000, // 24 hours in milliseconds (for FTP servers that truncate time)
   },
 };
 

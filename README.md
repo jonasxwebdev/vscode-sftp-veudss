@@ -1,21 +1,78 @@
-# sftp sync extension for VS Code
+# sftp-dss sync extension for VS Code
 
-This version is a fork of the current master. It extends the extension with one Option.
-***NEW: The delete Option always bypasses the ignore List!***
+This version is a fork of updated version by [@Natizyskunk](https://github.com/Natizyskunk/).
 
-**The new config option:
-`"useIgnoreForUpload": [bool]`
-**
+I used the current master as a baseline to add new functionality. It extends the extension with mutliple Options.
+
+
+**The first config Option:**
+
+ `"useIgnoreForUpload": [bool]`
 
 This allows the Ignore List to be used when uploading files via command or on Save.
+No blocked files are uploaded to the server anymore
+**NEW: The delete Option always bypasses the ignore List! ->** Deleting files on the server doenst follow the blocklist
 
-New maintained and updated version by [@Natizyskunk](https://github.com/Natizyskunk/) 😀 `<!-- and [@satiromarra](https://github.com/satiromarra) -->` `<br>`
-(Forked from the no longer maintained [liximomo&#39;s SFTP plugin](https://github.com/liximomo/vscode-sftp.git))
 
-- VS Code marketplace : https://marketplace.visualstudio.com/items?itemName=Natizyskunk.sftp `<br>`
-- VSIX release : https://github.com/Natizyskunk/vscode-sftp/releases/
+It also adds a new config option for showing synced files status (its fully customizeable)
+
+```json
+
+
+
+ "syncStatus": {
+        "type": "object",
+        "description": "File sync status decoration settings. Shows visual indicators for files that are out of sync with remote.",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "description": "Enable file sync status decorations in the file explorer.",
+            "default": false
+          },
+          "refreshInterval": {
+            "type": "number",
+            "description": "How often to refresh sync status (in milliseconds).",
+            "default": 30000
+          },
+          "showLocalOnly": {
+            "type": "boolean",
+            "description": "Show indicator for files that exist only locally (not uploaded).",
+            "default": true
+          },
+          "showRemoteOnly": {
+            "type": "boolean",
+            "description": "Show indicator for files that exist only on remote (not downloaded).",
+            "default": true
+          },
+          "showModified": {
+            "type": "boolean",
+            "description": "Show indicator for files that are modified and out of sync.",
+            "default": true
+          },
+          "showSynced": {
+            "type": "boolean",
+            "description": "Show indicator for files that are in sync.",
+            "default": false
+          },
+          "showIgnored": {
+            "type": "boolean",
+            "description": "Show indicator for files that are ignored.",
+            "default": false
+          },
+          "timeTolerance": {
+            "type": "number",
+            "description": "Time difference tolerance in milliseconds for date-only timestamps (when server returns 00:00:00). Files with precise timestamps (HH:MM:SS) use 60 second (1 minute) tolerance automatically. Default is 86400000 (24 hours) for FTP servers that truncate old file timestamps.",
+            "default": 86400000
+          }
+        }
+      },
+```
+
+## -- Forked Extension README --
+
 
 ## INFOS - 2023/06/23
+
 
 This is the main repository for the SFTP extension since [@liximomo](https://github.com/liximomo) has set his own to deprecated in favor of this one in the VSCode marketplace.
 There are also other forks that are available. Feel free to try them.

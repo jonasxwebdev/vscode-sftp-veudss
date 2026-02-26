@@ -55,6 +55,16 @@ interface ServiceOption {
     filesExclude?: string[];
     order: number;
   };
+  syncStatus: {
+    enabled: boolean;
+    refreshInterval: number;
+    showLocalOnly: boolean;
+    showRemoteOnly: boolean;
+    showModified: boolean;
+    showSynced: boolean;
+    showIgnored: boolean;
+    timeTolerance: number;
+  };
   remoteTimeOffsetInHours: number;
   limitOpenFilesOnRemote: number | true;
 }

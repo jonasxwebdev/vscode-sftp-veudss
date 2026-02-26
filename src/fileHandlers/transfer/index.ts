@@ -1,6 +1,7 @@
 import { refreshRemoteExplorer } from '../shared';
 import createFileHandler, { FileHandlerContext } from '../createFileHandler';
 import { transfer, sync, TransferOption, SyncOption, TransferDirection } from './transfer';
+import app from '../../app';
 
 function createTransferHandle(direction: TransferDirection) {
   return async function handle(this: FileHandlerContext, option) {
@@ -133,6 +134,10 @@ export const upload = createFileHandler<TransferOption>({
   },
   afterHandle() {
     refreshRemoteExplorer(this.target, this.fileService);
+    // Refresh file decoration
+    if (app.decorationProvider) {
+      app.decorationProvider.scheduleRefresh(this.target.localUri);
+    }
   },
 });
 
@@ -158,6 +163,10 @@ export const uploadFile = createFileHandler<TransferOption>({
   },
   afterHandle() {
     refreshRemoteExplorer(this.target, false);
+    // Refresh file decoration
+    if (app.decorationProvider) {
+      app.decorationProvider.scheduleRefresh(this.target.localUri);
+    }
   },
 });
 
@@ -176,6 +185,10 @@ export const uploadFolder = createFileHandler<TransferOption>({
   },
   afterHandle() {
     refreshRemoteExplorer(this.target, true);
+    // Refresh file decoration
+    if (app.decorationProvider) {
+      app.decorationProvider.scheduleRefresh(this.target.localUri);
+    }
   },
 });
 
