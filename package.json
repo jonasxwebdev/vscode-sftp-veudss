@@ -1,8 +1,8 @@
 {
-  "name": "sftp-dss",
-  "displayName": "SFTP - DSS",
-  "description": "SFTP/FTP sync",
-  "version": "1.16.6",
+  "name": "veu-sftp",
+  "displayName": "VEU sFTP extension",
+  "description": "SFTP/FTP sync with ignore list and file status indicators",
+  "version": "1.17.1",
   "publisher": "jonasxwebdev",
   "author": "jonasxwebdev",
   "engines": {
